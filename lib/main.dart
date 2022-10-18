@@ -20,18 +20,20 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text ('Flutter: Curso de Flutter'),
         ),
-        body: Column (children: const <Widget> [ 
+        body: ListView(
+          children: const [ Task('iniciando o curso'),
+          Task('fazendo o curso'),
+          Task('Finalizando o curso'),
           Task('iniciando o curso'),
           Task('fazendo o curso'),
           Task('Finalizando o curso'),
 
         ],
         ),
-        floatingActionButton: FloatingActionButton(onPressed:  () {
-          print("VOCÊ CLICOU!");
+        floatingActionButton: FloatingActionButton( onPressed:  () { const Task('Finalizando o curso');
         }),
-      ),
-    );
+        ),
+      );
   }
 }
 
@@ -41,7 +43,8 @@ class Task extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
       child:Column (children:<Widget> [ 
               Container(
                 color: Colors.white,
@@ -54,7 +57,12 @@ class Task extends StatelessWidget {
                     width: 72,
                     height: 100,
                     ),
-                    Text(frase),
+                    Text(
+                      frase,
+                      style: const TextStyle(
+                        fontSize: 24,overflow: TextOverflow.ellipsis
+                      ),
+                    ),
                     ElevatedButton(onPressed: () {}, child: Icon(Icons.arrow_drop_up))
                 ]),
               ),
